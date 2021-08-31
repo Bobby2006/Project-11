@@ -19,10 +19,9 @@ path.scale=1.2;
 boy = createSprite(180,340,30,30);
 boy.scale=0.08;
 boy.addAnimation("JakeRunning",boyImg);
-  
 
 leftBoundary=createSprite(0,0,100,800);
-leftBoundary.visible=false;
+leftBoundary.visible = false;
 
 rightBoundary=createSprite(410,0,100,800);
 rightBoundary.visible = false;
@@ -34,11 +33,17 @@ function draw() {
   
   boy.x = World.mouseX;
   
-  edges= createEdgeSprites();
+  edges = createEdgeSprites();
   boy.collide(edges[3]);
   boy.collide(leftBoundary);
   boy.collide(rightBoundary);
 
+  //Extra code I added because the boundary wasn't working too well.
+  if(boy.x < 0)
+  {
+    boy.x=116;
+  }
+  console.log(boy.x);
   if(path.y > 400 ){
     path.y = height/4;
   }
